@@ -38,7 +38,8 @@
       text-decoration: underline;
     }
     .navbar-brand img {
-      height: 40px;
+     width: 160px;
+     /* padding-left: 2rem; */
     }
     .search-box {
       border: 1px solid #ddd;
@@ -628,6 +629,211 @@
       background: #ffebeb;
       color: #c00;
     }
+
+    /* singlechair carousel */
+
+     .offer-zone {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 40vh;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .offer-zone-content {
+      max-width: 50%;
+      min-width: 300px;
+    }
+    .offer-zone-content h2 {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #222;
+    }
+    .offer-zone-content h2 span {
+      font-family: 'Great Vibes', cursive;
+      color: #96351e;
+      font-size: 4.5rem;
+    }
+    .offer-zone-content p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #444;
+    }
+    .offer-zone-content .btn {
+      margin-top: 2rem;
+      padding: 0.7rem 2rem;
+      border-radius: 0;
+    }
+
+    /* Right Side Product */
+    .offer-zone-product {
+      position: relative;
+      min-width: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-bg {
+      width: 500px;
+      height: 400px;
+      background-color: #f1e6da;
+      border-radius: 40%;
+      border-bottom-left-radius:50% ;
+      border-top-right-radius: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+     .circle-bg-1 {
+      width: 500px;
+      height: 500px;
+      background-color: #f1d5b3;
+      border-radius: 40%;
+      border-bottom-left-radius:90% ;
+      border-top-right-radius: 50%;
+      position: absolute;
+      top: 40%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+    .offer-zone-product img {
+      position: relative;
+      width: 400px;
+      /* max-width: 90vw; */
+      height: auto;
+      z-index: 1;
+    }
+    .info-product {
+      position: absolute;
+      top: -3%;
+      left: 0%;
+      background:linear-gradient(60deg,#ffffff00,#ffeedc91);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: right;
+      min-width: 120px;
+      max-width: 80vw;
+    }
+    .info-product h5 {
+      margin: 0;
+      font-weight: 700;
+      color: #706f6f;
+    }
+    .info-product a{
+        text-decoration: none;
+        color:#dbb98f;
+        font-weight: bold;
+    }
+    .discount-badge {
+      position: absolute;
+      bottom: 10%;
+      left: 20%;
+      background: #dbb98f;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .offer-zone {
+        padding: 3rem 2%;
+      }
+      .circle-bg {
+        width: 500px;
+        height: 400px;
+      }
+      .offer-zone-product img {
+        width: 350px;
+      }
+    }
+    @media (max-width: 992px) {
+      .offer-zone {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: unset;
+        padding: 2rem 2%;
+      }
+      .offer-zone-content {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .offer-zone-product {
+        width: 100%;
+        /* justify-content: flex-start; */
+      }
+      .circle-bg {
+        width: 350px;
+        height: 250px;
+      }
+      .offer-zone-product img {
+        width: 220px;
+      }
+    }
+    @media (max-width: 768px) {
+      .offer-zone-content h2 {
+        font-size: 2.5rem;
+      }
+      .offer-zone-content h2 span {
+        font-size: 3rem;
+      }
+      .circle-bg {
+        width: 220px;
+        height: 150px;
+      }
+      .offer-zone-product img {
+        width: 140px;
+      }
+      .info-product {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+      }
+      .discount-badge {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+      }
+    }
+    @media (max-width: 576px) {
+      .offer-zone {
+        padding: 1rem 0.5rem;
+      }
+      .offer-zone-content h2 {
+        font-size: 1.5rem;
+      }
+      .offer-zone-content h2 span {
+        font-size: 2rem;
+      }
+      .offer-zone-content h3 {
+        font-size: 1.1rem;
+      }
+      .offer-zone-content p {
+        font-size: 1rem;
+      }
+      .circle-bg {
+        width: 120px;
+        height: 80px;
+      }
+      .offer-zone-product img {
+        width: 80px;
+      }
+      .info-product {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+      }
+      .discount-badge {
+        font-size: 0.6rem;
+        padding: 4px 7px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -649,8 +855,8 @@
 
       <!-- Logo -->
       <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="">
-        <span class="fw-bold ms-2">COZY<br>CORNER</span>
+        <img src="assets/images/logo-2.png" alt="">
+        <!-- <span class="fw-bold ms-2"></span> -->
       </a>
 
       <!-- Toggler -->
@@ -1093,6 +1299,31 @@
   </div>
 </section>
 
+    <!-- offer-zone Section -->
+<section class="container offer-zone">
+  <!-- Left Content -->
+  <div class=" offer-zone-content">
+    <!-- <div class="circle-bg-1"></div> -->
+    
+    <!-- <h2>2025 <span>Summer</span></h2> -->
+    <h3>Brand-New Arrival Alert<br>Your Next Favorite is Here!</h3>
+    <p>Discover the latest must-have arrivals! Elevate your style with our newest collection of trendsetting items. Find your perfect fit with our diverse product.</p>
+    <!-- <button class="btn btn-outline-dark">Shop Now</button> -->
+  </div>
+
+  <!-- Right Product -->
+  <div class=" offer-zone-product">
+    <div class="circle-bg"></div>
+    <img id="product-img" src="assets/images/chair-1.png" alt="Product">
+    <div class="info-product">
+      <small id="product-price">$140</small>
+      <h5 id="product-title">Aurora Flexible Sofa</h5>
+      <a href="#">Buy Now</a>
+    </div>
+    <div class="discount-badge" id="product-discount">-5% OFF</div>
+  </div>
+</section>
+
 <!-- carousel -->
  <section class="furniture-carousel">
   <div class="container">
@@ -1141,7 +1372,10 @@
     <div class="row gy-4">
       <!-- Brand Info -->
       <div class="col-md-3">
-        <h4 class="footer-logo"><i class="fa-solid fa-home text-dark"></i> COZY CORNER</h4>
+        <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/images/logo-2.png" alt="">
+        <!-- <span class="fw-bold ms-2"></span> -->
+      </a>
         <p class="mt-2">Furnixar is a modern furniture template for an eCommerce website designed to help you create an impressive online store for your furniture.</p>
         <div class="social-icons">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1352,6 +1586,66 @@
       showSlide(index);
     }, 4000);
   </script>
+
+  <!-- single carousel -->
+   <script>
+  const products = [
+    {
+      img: "assets/images/chair-1.png",
+      price: "$140",
+      title: "Aurora Flexible Sofa",
+      discount: "-5% OFF",
+      bg: "#f1e6da"
+    },
+    {
+      img: "assets/images/chair-2.png",
+      price: "$180",
+      title: "Elegance Lounge Chair",
+      discount: "-10% OFF",
+      bg: "#e3f0f6"
+    },
+    {
+      img: "assets/images/chair-3.png",
+      price: "$220",
+      title: "Luxury Wooden Chair",
+      discount: "-15% OFF",
+      bg: "#e0fff0"
+    }
+  ];
+
+  let index1 = 0;
+
+  function changeProduct() {
+    index1 = (index1 + 1) % products.length;
+    const product = products[index1];
+
+    // Animate out
+    gsap.to("#product-img", {opacity: 0, y: 50, duration: 0.5});
+    gsap.to(".circle-bg", {scale: 0.8, opacity: 0.5, duration: 0.5});
+
+    setTimeout(() => {
+      document.getElementById("product-img").src = product.img;
+      document.getElementById("product-price").textContent = product.price;
+      document.getElementById("product-title").textContent = product.title;
+      document.getElementById("product-discount").textContent = product.discount;
+      document.querySelector(".circle-bg").style.backgroundColor = product.bg;
+
+      // Animate in
+      gsap.fromTo("#product-img", {opacity: 0, y: -50}, {opacity: 1, y: 0, duration: 0.7});
+      gsap.to(".circle-bg", {scale: 1, opacity: 1, duration: 0.7});
+    }, 500);
+  }
+
+  // Auto change every 3 sec
+  setInterval(changeProduct, 3000);
+
+  // Initial Animation
+  gsap.from(".offer-zone-content h2", {y: 80, opacity: 0, duration: 1});
+  gsap.from(".offer-zone-content h3", {y: 80, opacity: 0, duration: 1, delay: 0.3});
+  gsap.from(".offer-zone-content p", {y: 80, opacity: 0, duration: 1, delay: 0.6});
+  gsap.from(".offer-zone-content button", {y: 80, opacity: 0, duration: 1, delay: 0.9});
+  gsap.from(".offer-zone-product img", {scale: 0.8, opacity: 0, duration: 1, delay: 1});
+</script>
 
 </body>
 </html>
