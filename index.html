@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furnixar Hero Section</title>
+  
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+   <!-- SwiperJS for Carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f7f2e7;
+      margin: 0;
+      padding: 0;
+    }
+   
+
+    /* Navbar */
+   .top-offer-bar {
+      font-size: 14px;
+      background:rgba(255, 255, 255, 0.356);
+      border-bottom: 1px solid #eee;
+      padding: 5px 0;
+    }
+    .top-offer-bar a {
+      color: black;
+      text-decoration: underline;
+    }
+    .navbar-brand img {
+      height: 40px;
+    }
+    .search-box {
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      padding: 5px 15px;
+      display: flex;
+      align-items: center;
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+    }
+    .search-box i {
+      color: #444;
+    }
+    .nav-icons i {
+      font-size: 20px;
+      margin-left: 15px;
+      cursor: pointer;
+      position: relative;
+    }
+    .nav-icons .badge {
+      font-size: 10px;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      background: #28a745;
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 5px;
+    }
+   
+    .navbar-nav .nav-link {
+      font-weight: 600;
+      padding: 22px !important;
+    }
+    .navbar-nav .nav-link.sale {
+      color: red !important;
+    }
+    /* Hero Section */
+     .hero-slider {
+      position: relative;
+      height: 85vh;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .hero-bg.active {
+      opacity: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #f7f2ec;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 8%;
+      max-width: 900px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero-content p {
+      margin: 15px 0;
+      font-size: 1.2rem;
+      color: #e4e4e4;
+    }
+    .hero-content .badge {
+      border: 1px solid #fff;
+      font-size: 0.9rem;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+      width: fit-content;
+    }
+    .btn-custom {
+      background: #96351e;
+      width: fit-content;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      font-size: .5rem;
+      background: rgba(0, 0, 0, 0);
+      color: #fff;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .slider-nav.left { left: 20px; }
+    .slider-nav.right { right: 20px; }
+
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 5;
+    }
+    .dots span {
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    .dots .active {
+      opacity: 1;
+    }
+
+    @media(max-width:768px){
+      .hero-content h1 { font-size: 2rem; }
+      .hero-content p { font-size: 1rem; }
+    }
+
+        .new-arrival {
+      /* padding: 4rem 2rem; */
+      text-align: center;
+    }
+
+    .new-arrival h2 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .new-arrival p {
+      color: #555;
+      margin-bottom: 3rem;
+    }
+
+    .product-card {
+      overflow: hidden;
+      position: relative;
+      border-radius: 8px;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.08);
+    }
+       .product-info {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      background:linear-gradient(60deg,#ffffff00,#ffeedc91);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: right;
+      min-width: 120px;
+      max-width: 80vw;
+    }
+    .product-info h5 {
+      margin: 0;
+      font-weight: 700;
+      color: #706f6f;
+    }
+    .product-info a{
+        text-decoration: none;
+        color:#dbb98f;
+        font-weight: bold;
+    }
+
+    @media (max-width: 1200px) {
+      .product-card img {
+        height: 320px;
+      }
+    }
+    @media (max-width: 992px) {
+      .product-card img {
+        height: 220px;
+      }
+    }
+    @media (max-width: 768px) {
+      .product-card img {
+        height: 250px;
+      }
+         .product-info {
+      padding: .5rem 0.5rem;
+      text-align: left;
+    }
+     .product-info h6 {
+      font-size: .6rem;
+      margin: 0;
+    }
+    }
+    @media (max-width: 576px) {
+      .product-card img {
+        height: 250px;
+      }
+    }
+
+    .product-info {
+      padding: 1rem 0.5rem;
+      text-align: left;
+    }
+
+    .product-info h6 {
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 0.3rem 0;
+    }
+
+    .product-info small {
+      color: #3f3e3e;
+    }
+
+    .rating {
+      color: #f4b400;
+      font-size: 0.9rem;
+    }
+
+    /* Discount Badge Box */
+    .discount-box {
+      background: #ffffff56;
+      padding: .9rem 1.1rem;
+      position: absolute;
+      top: 15%;
+      left: 15%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .discount-box h3 {
+      font-weight: 700;
+      margin: 0;
+    }
+    .discount-box p {
+      margin: 0.2rem 0 0.8rem;
+      color: #333;
+    }
+    .discount-box .btn {
+      border-radius: 0;
+      padding: 0.4rem 1rem;
+    }
+
+    .shop-btn {
+      margin-top: 3rem;
+    }
+
+    /* furniture carousel */
+       section.furniture-carousel {
+      padding: 60px 0;
+    }
+    .furniture-carousel .content-box h2 {
+      font-weight: 700;
+    }
+    .furniture-carousel .swiper {
+      padding: 20px 0;
+    }
+    .furniture-carousel .swiper-slide {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
+    .furniture-carousel .swiper-slide img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .furniture-carousel .swiper-slide:hover img {
+      transform: scale(1.05);
+    }
+    .furniture-carousel .add-to-cart {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 123, 137, 0.9);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .furniture-carousel .swiper-slide:hover .add-to-cart {
+      opacity: 1;
+    }
+    .swiper-pagination-bullets .swiper-pagination-bullet {
+      background: #eca64a;
+      opacity: 0.5;
+      
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1 !important;
+    }
+
+    /* POPULAR COLLECTION */
+      .popular-collections {
+    padding: 20px 0;
+    text-align: center;
+    background: #f3ede1;
+  }
+  .popular-collections h2 {
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+  .collection-card {
+    text-align: center;
+  }
+  .collection-card img {
+    max-width: 100%;
+    height: 80PX;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+  .collection-card img:hover {
+    transform: scale(1.05);
+  }
+  .collection-card h6 {
+    font-weight: 500;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  /* Desktop grid */
+  @media (min-width: 768px) {
+    .swipers {
+      display: none;
+    }
+  }
+
+  /* Mobile carousel */
+  @media (max-width: 767px) {
+    .desktop-collections {
+      display: none;
+    }
+  }
+
+  /* sofa collection */
+   .new-arrivals {
+      padding: 40px 0;
+    }
+
+    .left-card {
+      background: #f8f8f891;
+      padding: 10px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      border-radius: 8px;
+    }
+
+    .left-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .left-card h2 {
+      font-weight: 700;
+    }
+
+    .explore-btn {
+      border: 1px solid #000;
+      padding: 8px 20px;
+      background: transparent;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .explore-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    /* Product Card */
+    .product-card-1 {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .product-card-1 img {
+      width: 100%;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+    .product-card-1 img:hover {
+        opacity: 0.7;
+        transform: scale(1.05);
+        transition: 0.3s ease-in-out;
+    }
+
+    .product-info-1 {
+      padding: 10px 0;
+      margin-top: 3rem;
+    }
+
+    .add-to-cart {
+      position: absolute;
+      bottom: 6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #96351e;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      opacity: 0;
+      transition: 0.3s ease-in-out;
+      white-space: nowrap;
+    }
+
+    .product-card-1:hover .add-to-cart {
+      opacity: 1;
+    }
+
+    /* Swiper controls */
+    .swiper-button-next,
+    .swiper-button-prev {
+      background: rgba(255, 255, 255, 0.9);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .swiper:hover .swiper-button-next,
+    .swiper:hover .swiper-button-prev {
+      opacity: 1;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 16px;
+      color: #000;
+    }
+    /* Offer Tag */
+.offer-tag {
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  background: #96351e; /* green */
+  color: #fff;
+  padding: 5px 40px;
+  font-size: 13px;
+  font-weight: 600;
+  transform: rotate(-45deg);
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* footer */
+   footer {
+      background: rgba(248, 230, 216, 0.411);
+      padding: 60px 20px 20px;
+      border-top: 1px solid #eee;
+    }
+    footer h5 {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    footer ul li {
+      margin-bottom: 8px;
+    }
+    footer ul li a {
+      text-decoration: none;
+      color: #2f2f2f;
+      transition: 0.3s;
+    }
+    footer ul li a:hover {
+      color: #ba9f7f;
+    }
+    .footer-logo {
+      font-size: 26px;
+      font-weight: 800;
+    }
+    .social-icons a {
+      margin-right: 12px;
+      color: #2f2f2f;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ba9f7f;
+    }
+    .footer-bottom {
+      border-top: 1px solid #eee;
+      margin-top: 30px;
+      padding-top: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .payment-icons img {
+      height: 28px;
+      margin-right: 10px;
+    }
+    .newsletter input {
+      border: 1px solid #ddd;
+      padding: 8px;
+      width: 70%;
+      border-radius: 6px 0 0 6px;
+    }
+    .newsletter button {
+      border: none;
+      background: #ba9f7f;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 0 6px 6px 0;
+    }
+/* 3card */
+ .offer-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .offer-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .offer-card:hover img {
+      transform: scale(1.08);
+    }
+    .offer-content {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #fff;
+      z-index: 2;
+    }
+    .offer-tag-1 {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #000;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .offer-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .offer-subtext {
+      font-size: 1rem;
+    }
+    /* Specific colors for tags */
+    .tag-sale {
+      background: #ffebeb;
+      color: #c00;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+ <!-- Top Offer Bar -->
+  <div class="container-fluid top-offer-bar text-center">
+    <i class="bi bi-tag"></i> Only this week <span class="text-danger">-20%</span> For all Sofas and Couches →
+    <a href="#">Sofas and Couches</a>
+    <span style="float:right;margin-right: 6rem;">
+      <a href="#about" style="margin-right: 1rem; color: #070707; text-decoration: none;">About Us</a>
+      <a href="#contact" style=" color: #000000; text-decoration: none;">Contact</a>
+    </span>
+    </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top border-bottom">
+    <div class="container-fluid px-4">
+
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="">
+        <span class="fw-bold ms-2">COZY<br>CORNER</span>
+      </a>
+
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item"><a class="nav-link dropdown-toggle" href="#">Pages</a></li> -->
+          <li class="nav-item"><a class="nav-link dropdown-toggle" href="#">Desks</a></li>
+          <li class="nav-item"><a class="nav-link dropdown-toggle" href="#">Chairs</a></li>
+          <li class="nav-item"><a class="nav-link dropdown-toggle" href="#">Sofas </a></li>
+          <li class="nav-item"><a class="nav-link dropdown-toggle" href="#"> Tables</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Lighting</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#">Miscellaneous</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="#">Office Accessories</a></li>
+          <li class="nav-item"><a class="nav-link sale" href="#">Sale</a></li>
+        </ul>
+
+        <!-- Search Box -->
+        <form class="d-flex mx-3 search-box">
+          <input class="form-control" type="search" placeholder="Search for products">
+          <i class="bi bi-search"></i>
+        </form>
+
+        <!-- Contact + Icons -->
+        <div class="d-flex align-items-center nav-icons">
+          <div class="me-4 d-none d-lg-block">
+            <small class="d-block">Need help?</small>
+            <strong>+1-202-555-0172</strong>
+          </div>
+          <i class="bi bi-person"></i>
+          <i class="bi bi-heart">
+            <span class="badge">0</span>
+          </i>
+          <i class="bi bi-bag">
+            <span class="badge">0</span>
+          </i>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+ <section class="hero-slider">
+    <!-- Backgrounds -->
+    <img src="assets/images/hero-1.jpeg" class="hero-bg active" alt="bg1">
+    <img src="assets/images/hero-2.jpeg" class="hero-bg" alt="bg2">
+    <img src="assets/images/hero-3.jpeg" class="hero-bg" alt="bg3">
+    <img src="assets/images/hero-4.jpeg" class="hero-bg" alt="bg4">
+
+    <!-- Content -->
+    <div class="hero-content">
+      <span class="badge  mb-3">Furnishing Dreams</span>
+      <h1 id="hero-title">Transform Your Space with Timeless Elegance.</h1>
+      <p id="hero-sub">Furniture for the Modern Home.</p>
+      <a href="#" class="btn-custom mt-3">Discover Set Sofa</a>
+    </div>
+
+    <!-- Navigation -->
+    <div class="slider-nav left">&#10094;</div>
+    <div class="slider-nav right">&#10095;</div>
+    
+    <!-- Dots -->
+    <div class="dots"></div>
+  </section>
+
+
+<!-- Popular Collections -->
+ <section class="popular-collections pt-5">
+  <div class="container">
+    <h2 class="pt-4">Popular Collections</h2>
+
+    <!-- Desktop Grid -->
+    <div class="row desktop-collections">
+      <div class="col-6 col-md-2 collection-card">
+        <img src="assets/images/wooden-sofa.png" alt="Wooden Sofa Set">
+        <h6> SOFA SET</h6>
+      </div>
+      <div class="col-6 col-md-2 collection-card">
+        <img src="assets/images/wardrobe.png" alt="Fabric Sofa Set">
+        <h6>WARDROBES</h6>
+      </div>
+      <div class="col-6 col-md-2 collection-card">
+        <img src="assets/images/cat-chair.png" alt="Bed Cot">
+        <h6>CHAIRS</h6>
+      </div>
+      <div class="col-6 col-md-2 collection-card">
+        <img src="assets/images/cat-desk.png" alt="Dining Set">
+        <h6>DESKS</h6>
+      </div>
+      <div class="col-6 col-md-2 collection-card">
+        <img src="assets/images/cat-table.png" alt="Arm Chair">
+        <h6>TABLES</h6>
+      </div>
+      <div class="col-6 col-md-2 collection-card">
+        <img src="assets/images/cat-cabinet.png" alt="Diwan Cot">
+        <h6>CABINETS</h6>
+      </div>
+    </div>
+
+    <!-- Mobile Carousel -->
+  <div class="swipers mySwiper2">
+  <div class="swiper-wrapper2">
+  <div class="swiper-slide2 collection-card">
+          <img src="assets/images/wooden-sofa.png" alt="Wooden Sofa Set">
+        <h6> SOFA SET</h6>
+        </div>
+  <div class="swiper-slide2 collection-card">
+           <img src="assets/images/wardrobe.png" alt="Fabric Sofa Set">
+        <h6>WARDROBES</h6>
+        </div>
+  <div class="swiper-slide2 collection-card">
+           <img src="assets/images/cat-chair.png" alt="Bed Cot">
+        <h6>CHAIRS</h6>
+        </div>
+  <div class="swiper-slide2 collection-card">
+          <img src="assets/images/cat-desk.png" alt="Dining Set">
+        <h6>DESKS</h6>
+        </div>
+  <div class="swiper-slide2 collection-card">
+          <img src="assets/images/cat-table.png" alt="Arm Chair">
+        <h6>TABLES</h6>
+        </div>
+  <div class="swiper-slide2 collection-card">
+          <img src="assets/images/cat-cabinet.png" alt="Diwan Cot">
+        <h6>CABINETS</h6>
+        </div>
+      </div>
+  <div class="swiper-pagination2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- sofa collection -->
+ <div class="container new-arrivals">
+  <div class="row g-4">
+    <!-- Left Side Fixed Card -->
+    <div class="col-lg-3">
+      <div class="left-card">
+        <img src="assets/images/Photo_1755428497161.webp" alt="Sofa">
+        <h2>New Arrivals!</h2>
+        <p>Our Latest Sofa Collection is here!</p>
+        <button class="explore-btn">Explore!</button>
+      </div>
+    </div>
+
+    <!-- Right Side Slider -->
+    <div class="col-lg-9 mt-5">
+      <div class="swiper mySwiper3">
+        <div class="swiper-wrapper">
+          <!-- Product Card 1 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/sofa1 (1)" alt="Product">
+              
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Travancore Teak Wood Sofa</h6>
+                <p>From <strong>Rs. 42,500.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/sofa1 (2).jpeg" alt="Product">
+             
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Crayon Fabric Sofa</h6>
+                <p>From <strong>Rs. 31,750.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/sofa1 (1).jpeg" alt="Product">
+              
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Shell Teak Wood Sofa</h6>
+                <p>From <strong>Rs. 42,500.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/sofa1 (3).jpeg" alt="Product">
+             
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Vanchi Teak Wood Sofa</h6>
+                <p>From <strong>Rs. 34,000.00</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiper Controls -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+  <h3 class="mb-4 fw-bold">Featured offers</h3>
+  <div class="row g-4">
+    
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <div class="offer-card bg-light" style="background-color:#f9d8d6; height:250px;">
+        <img src="assets/images/default-banner-1.jpg" alt="Table">
+        <div class="offer-content text-dark">
+          <span class="offer-tag-1">Tables</span>
+          <h4 class="offer-title">Make Your Home a Masterpiece</h4>
+          <p class="offer-subtext">Discover Unique Finds!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <div class="offer-card bg-light" style="background-color:#7a6e65; height:250px;">
+        <img src="assets/images/default-banner-2.jpg" alt="Lighting">
+        <div class="offer-content">
+          <span class="offer-tag-1">Lighting</span>
+          <h4 class="offer-title">From Shadow to Shine</h4>
+          <p class="offer-subtext">Best Lighting Solutions!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <div class="offer-card bg-light" style="background-color:#8eb2b3; height:250px;">
+        <img src="assets/images/default-banner-3.jpg" alt="Chair">
+        <div class="offer-content">
+          <span class="offer-tag-1 tag-sale">Sale</span>
+          <h4 class="offer-title">–25% for all chairs!</h4>
+          <p class="offer-subtext">Don’t miss the deal!</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- chair -->
+ <!-- sofa collection -->
+ <div class="container new-arrivals">
+  <div class="row g-4">
+    
+
+    <!-- Right Side Slider -->
+    <div class="col-lg-9 mt-5">
+      <div class="swiper mySwiper3">
+        <div class="swiper-wrapper">
+          <!-- Product Card 1 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/chair-main (2).jpeg" alt="Product">
+              
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Travancore Teak Wood Sofa</h6>
+                <p>From <strong>Rs. 42,500.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/chair-main (3).jpeg" alt="Product">
+             
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Crayon Fabric Sofa</h6>
+                <p>From <strong>Rs. 31,750.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/chair-main (4).jpeg" alt="Product">
+              
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Shell Teak Wood Sofa</h6>
+                <p>From <strong>Rs. 42,500.00</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="swiper-slide">
+            <div class="product-card-1">
+                <div class="offer-tag">10% OFF</div>
+
+              <img src="assets/images/chair-main (5).jpeg" alt="Product">
+             
+              <div class="add-to-cart">Add to Cart</div>
+              <div class="product-info-1">
+                <h6>Vanchi Teak Wood Sofa</h6>
+                <p>From <strong>Rs. 34,000.00</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiper Controls -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+    <!-- Left Side Fixed Card -->
+    <div class="col-lg-3">
+      <div class="left-card">
+        <img src="assets/images/chair-main (1)" alt="Sofa">
+        <h2>New Arrivals!</h2>
+        <p>Our Latest Chair Collection is here!</p>
+        <button class="explore-btn">Explore!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<section class="new-arrival container mt-5 ">
+  <h2>Collection</h2>
+  <p>Discover the latest must-have arrivals! Elevate your style with our newest collection of trendsetting items.</p>
+
+  <div class="row g-3">
+    <!-- Card 1 -->
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="assets/images/10 Modern Scandinavian Dining Chair Ideas for a Stylish Dining Space.jpeg" alt="Table With Pops">
+        <div class="product-info">
+          <small>$140.99</small>
+          <h6>Table With Pops</h6>
+          <div class="rating">★ ★ ★ ★ ★ <small>(1230)</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="assets/images/Chai Milk Nook_ A Cozy Reading Spot in Sculpted Neutrals.jpeg" alt="Luxury Lamp for Wall">
+        <div class="product-info">
+          <small>$122.75</small>
+          <h6>Luxury Lamp for Wall</h6>
+          <div class="rating">★ ★ ★ ★ ☆ <small>(1230)</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 (with discount) -->
+    <div class="col-md-6">
+      <div class="product-card ">
+        <img src="assets/images/Japanese-style Log Wind Straight Row Sofa Simple Small Apartment Homestay Villa Three-person Sofa Chair - AliExpress.jpeg" alt="Flower Vase">
+        <div class="discount-box">
+          <h3>45% <small>OFF</small></h3>
+          <p>All new Flower Vase</p>
+          <a href="#" class="btn btn-outline-dark btn-sm">See all Products</a>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- Card 4 (large) -->
+    <div class="col-md-6">
+      <div class="product-card ">
+        <img src="assets/images/download (10).jpeg" alt="Sofa">
+        <div class="discount-box">
+          <h3>30% <small>OFF</small></h3>
+          <p>All new Arrival Sofa</p>
+          <a href="#" class="btn btn-outline-dark btn-sm">See all Products</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="assets/images/Hygge-Inspired Scandinavian Home Office Decor for Cozy Work Space.jpeg" alt="White Minimal Chair">
+        <div class="product-info">
+          <small>$140.99</small>
+          <h6>White Minimal Chair</h6>
+          <div class="rating">★ ★ ★ ★ ★ <small>(1230)</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="assets/images/Unlock 2025 Interior Color Trends_ Transform Your Home with These 4 Must-Have Hues -.jpeg" alt="Luxury Vase for Table">
+        <div class="product-info">
+          <small>$122.75</small>
+          <h6>Luxury Vase for Table</h6>
+          <div class="rating">★ ★ ★ ★ ☆ <small>(1230)</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop Button -->
+  <div class="shop-btn">
+    <a href="#" class="btn btn-outline-dark">Go to shop</a>
+  </div>
+</section>
+
+<!-- carousel -->
+ <section class="furniture-carousel">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Left Content -->
+      <div class="col-lg-5 content-box">
+        <h2>70+ Unique Furniture Inspirations</h2>
+        <p>Innovative and stylish, this furniture set is perfect, beautiful, comfy, and elegant.</p>
+        <button class="btn btn-outline-dark">Explore More</button>
+      </div>
+
+      <!-- Right Carousel -->
+      <div class="col-lg-7 ">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <img src="assets/images/Chambre Douillette _ 8 Secrets pour un Cocon Cosy Inspirant.jpeg" alt="Furniture">
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/images/Earthy Color Palettes_ Rich, Timeless Choices for Organic Modern Homes.jpeg" alt="Furniture">
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/images/Modern Cozy Armchair Design for Reading Nooks ✨.jpeg" alt="Furniture">
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/images/Unlock 2025 Interior Color Trends_ Transform Your Home with These 4 Must-Have Hues -.jpeg" alt="Furniture">
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <!-- <div class="swiper-pagination "></div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row gy-4">
+      <!-- Brand Info -->
+      <div class="col-md-3">
+        <h4 class="footer-logo"><i class="fa-solid fa-home text-dark"></i> COZY CORNER</h4>
+        <p class="mt-2">Furnixar is a modern furniture template for an eCommerce website designed to help you create an impressive online store for your furniture.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Sitemap -->
+      <div class="col-md-2">
+        <h5>Sitemap</h5>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Clients</a></li>
+          <!-- <li><a href="#">Error</a></li> -->
+        </ul>
+      </div>
+
+      <!-- Others -->
+      <div class="col-md-2">
+        <h5>Others</h5>
+        <ul>
+          <li><a href="#">Shipping Method</a></li>
+          <li><a href="#">Payment Method</a></li>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Coming Soon</a></li>
+        </ul>
+      </div>
+
+      <!-- Shop -->
+      <div class="col-md-2">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#">Shop</a></li>
+          <!-- <li><a href="#">Product Single</a></li> -->
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Checkout</a></li>
+          <li><a href="#">Wishlist</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="col-md-3">
+        <h5>Customer Service</h5>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Terms & Condition</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <!-- Newsletter -->
+        <div class="newsletter mt-3">
+          <h6>Email us</h6>
+          <form class="d-flex mt-2">
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">sent</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <div class="payment-icons">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal">
+          <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Google_Pay_Logo.svg" alt="Google Pay"> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+     © 2025 cozy corner. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- GSAP & JS -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  // Swiper Init
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+    }
+  });
+
+  // GSAP Entry Animation
+  gsap.from(".content-box", {
+    x: -100,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+  });
+
+  gsap.from(".swiper-slide", {
+    y: 50,
+    opacity: 0,
+    stagger: 0.2,
+    duration: 1,
+    ease: "power2.out"
+  });
+</script>
+<script>
+  var swiper = new Swiper(".mySwiper3", {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 3 },
+    }
+  });
+</script>
+<script>
+    const slides = document.querySelectorAll(".hero-bg");
+    const titles = [
+      "Transform Your Space with Timeless Elegance.",
+      "Luxury Meets Comfort in Every Corner.",
+      "Bring Modern Design to Your Living Room.",
+      "Elevate Your Home with Classic Style."
+    ];
+    const subs = [
+      "Furniture for the Modern Home.",
+      "Crafted with passion and precision.",
+      "Redefining spaces with innovation.",
+      "Designed for those who value elegance."
+    ];
+
+    const titleEl = document.getElementById("hero-title");
+    const subEl = document.getElementById("hero-sub");
+    const dotsContainer = document.querySelector(".dots");
+
+    let index = 0;
+
+    // Create dots
+    slides.forEach((_, i) => {
+      let dot = document.createElement("span");
+      if(i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll("span");
+
+    function showSlide(i){
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle("active", idx === i);
+        dots[idx].classList.toggle("active", idx === i);
+      });
+
+      // Animate text with GSAP
+      gsap.fromTo(titleEl, {y:-50, opacity:0}, {y:0, opacity:1, duration:1});
+      gsap.fromTo(subEl, {y:-30, opacity:0}, {y:0, opacity:1, duration:1, delay:0.2});
+
+      titleEl.textContent = titles[i];
+      subEl.textContent = subs[i];
+    }
+
+    function goToSlide(i){
+      index = i;
+      showSlide(index);
+    }
+
+    document.querySelector(".slider-nav.right").addEventListener("click", () => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    });
+
+    document.querySelector(".slider-nav.left").addEventListener("click", () => {
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide(index);
+    });
+
+    // Auto slide
+    setInterval(() => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }, 4000);
+  </script>
+
+</body>
+</html>

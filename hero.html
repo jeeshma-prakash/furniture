@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+   <!-- SwiperJS for Carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<style>
+  /* Hero Section */
+     /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 8%;
+      min-height: 90vh;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      max-width: 50%;
+      min-width: 300px;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #222;
+    }
+    .hero-content h1 span {
+      font-family: 'Great Vibes', cursive;
+      color: #96351e;
+      font-size: 4.5rem;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #444;
+    }
+    .hero-content .btn {
+      margin-top: 2rem;
+      padding: 0.7rem 2rem;
+      border-radius: 0;
+    }
+
+    /* Right Side Product */
+    .hero-product {
+      position: relative;
+      min-width: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-bg {
+      width: 700px;
+      height: 600px;
+      background-color: #f1e6da;
+      border-radius: 40%;
+      border-bottom-left-radius:50% ;
+      border-top-right-radius: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+     .circle-bg-1 {
+      width: 700px;
+      height: 800px;
+      background-color: #dbb98f;
+      border-radius: 40%;
+      border-bottom-left-radius:50% ;
+      border-top-right-radius: 90%;
+      position: absolute;
+      top: 20%;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+    .hero-product img {
+      position: relative;
+      width: 500px;
+      max-width: 90vw;
+      height: auto;
+      z-index: 1;
+    }
+    .product-info {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      background:linear-gradient(60deg,#ffffff00,#ffeedc91);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: right;
+      min-width: 120px;
+      max-width: 80vw;
+    }
+    .product-info h5 {
+      margin: 0;
+      font-weight: 700;
+      color: #706f6f;
+    }
+    .product-info a{
+        text-decoration: none;
+        color:#dbb98f;
+        font-weight: bold;
+    }
+    .discount-badge {
+      position: absolute;
+      bottom: 10%;
+      left: 20%;
+      background: #dbb98f;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .hero {
+        padding: 3rem 2%;
+      }
+      .circle-bg {
+        width: 500px;
+        height: 400px;
+      }
+      .hero-product img {
+        width: 350px;
+      }
+    }
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: unset;
+        padding: 2rem 2%;
+      }
+      .hero-content {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .hero-product {
+        width: 100%;
+        /* justify-content: flex-start; */
+      }
+      .circle-bg {
+        width: 350px;
+        height: 250px;
+      }
+      .hero-product img {
+        width: 220px;
+      }
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-content h1 span {
+        font-size: 3rem;
+      }
+      .circle-bg {
+        width: 220px;
+        height: 150px;
+      }
+      .hero-product img {
+        width: 140px;
+      }
+      .product-info {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+      }
+      .discount-badge {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+      }
+    }
+    @media (max-width: 576px) {
+      .hero {
+        padding: 1rem 0.5rem;
+      }
+      .hero-content h1 {
+        font-size: 1.5rem;
+      }
+      .hero-content h1 span {
+        font-size: 2rem;
+      }
+      .hero-content h3 {
+        font-size: 1.1rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .circle-bg {
+        width: 120px;
+        height: 80px;
+      }
+      .hero-product img {
+        width: 80px;
+      }
+      .product-info {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+      }
+      .discount-badge {
+        font-size: 0.6rem;
+        padding: 4px 7px;
+      }
+    }
+  </style>
+<body>
+    <!-- Hero Section -->
+<section class="hero">
+  <!-- Left Content -->
+  <div class="hero-content">
+    <div class="circle-bg-1"></div>
+    <h1>2025 <span>Summer</span></h1>
+    <h3>Brand-New Arrival Alert<br>Your Next Favorite is Here!</h3>
+    <p>Discover the latest must-have arrivals! Elevate your style with our newest collection of trendsetting items. Find your perfect fit with our diverse product.</p>
+    <button class="btn btn-outline-dark">Shop Now</button>
+  </div>
+
+  <!-- Right Product -->
+  <div class="hero-product">
+    <div class="circle-bg"></div>
+    <img id="product-img" src="assets/images/chair-1.png" alt="Product">
+    <div class="product-info">
+      <small id="product-price">$140</small>
+      <h5 id="product-title">Aurora Flexible Sofa</h5>
+      <a href="#">Buy Now</a>
+    </div>
+    <div class="discount-badge" id="product-discount">-5% OFF</div>
+  </div>
+</section>
+
+
+<!-- GSAP & JS -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  // Swiper Init
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+    }
+  });
+
+  // GSAP Entry Animation
+  gsap.from(".content-box", {
+    x: -100,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+  });
+
+  gsap.from(".swiper-slide", {
+    y: 50,
+    opacity: 0,
+    stagger: 0.2,
+    duration: 1,
+    ease: "power2.out"
+  });
+</script>
+<script>
+  var swiper = new Swiper(".mySwiper3", {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 3 },
+    }
+  });
+</script>
+<script>
+  const products = [
+    {
+      img: "assets/images/chair-1.png",
+      price: "$140",
+      title: "Aurora Flexible Sofa",
+      discount: "-5% OFF",
+      bg: "#f1e6da"
+    },
+    {
+      img: "assets/images/chair-2.png",
+      price: "$180",
+      title: "Elegance Lounge Chair",
+      discount: "-10% OFF",
+      bg: "#e3f0f6"
+    },
+    {
+      img: "assets/images/chair-3.png",
+      price: "$220",
+      title: "Luxury Wooden Chair",
+      discount: "-15% OFF",
+      bg: "#e0fff0"
+    }
+  ];
+
+  let index = 0;
+
+  function changeProduct() {
+    index = (index + 1) % products.length;
+    const product = products[index];
+
+    // Animate out
+    gsap.to("#product-img", {opacity: 0, y: 50, duration: 0.5});
+    gsap.to(".circle-bg", {scale: 0.8, opacity: 0.5, duration: 0.5});
+
+    setTimeout(() => {
+      document.getElementById("product-img").src = product.img;
+      document.getElementById("product-price").textContent = product.price;
+      document.getElementById("product-title").textContent = product.title;
+      document.getElementById("product-discount").textContent = product.discount;
+      document.querySelector(".circle-bg").style.backgroundColor = product.bg;
+
+      // Animate in
+      gsap.fromTo("#product-img", {opacity: 0, y: -50}, {opacity: 1, y: 0, duration: 0.7});
+      gsap.to(".circle-bg", {scale: 1, opacity: 1, duration: 0.7});
+    }, 500);
+  }
+
+  // Auto change every 3 sec
+  setInterval(changeProduct, 3000);
+
+  // Initial Animation
+  gsap.from(".hero-content h1", {y: 80, opacity: 0, duration: 1});
+  gsap.from(".hero-content h3", {y: 80, opacity: 0, duration: 1, delay: 0.3});
+  gsap.from(".hero-content p", {y: 80, opacity: 0, duration: 1, delay: 0.6});
+  gsap.from(".hero-content button", {y: 80, opacity: 0, duration: 1, delay: 0.9});
+  gsap.from(".hero-product img", {scale: 0.8, opacity: 0, duration: 1, delay: 1});
+</script>
+<script>
+  var swiper2 = new Swiper(".mySwiper2", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: ".swiper-pagination2",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    loop: true,
+  });
+</script>
+</body>
+</html>
