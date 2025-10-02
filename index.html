@@ -894,7 +894,7 @@
           <i class="bi bi-heart">
             <span class="badge">0</span>
           </i>
-          <i class="bi bi-bag">
+          <i class="bi bi-truck">
             <span class="badge">0</span>
           </i>
         </div>
@@ -962,28 +962,28 @@
 
     <!-- Mobile Carousel -->
   <div class="swipers mySwiper2">
-  <div class="swiper-wrapper2">
-  <div class="swiper-slide2 collection-card">
+  <div class="swiper-wrapper">
+  <div class="swiper-slide collection-card">
           <img src="assets/images/wooden-sofa.png" alt="Wooden Sofa Set">
         <h6> SOFA SET</h6>
         </div>
-  <div class="swiper-slide2 collection-card">
+  <div class="swiper-slide collection-card">
            <img src="assets/images/wardrobe.png" alt="Fabric Sofa Set">
         <h6>WARDROBES</h6>
         </div>
-  <div class="swiper-slide2 collection-card">
+  <div class="swiper-slide collection-card">
            <img src="assets/images/cat-chair.png" alt="Bed Cot">
         <h6>CHAIRS</h6>
         </div>
-  <div class="swiper-slide2 collection-card">
+  <div class="swiper-slide collection-card">
           <img src="assets/images/cat-desk.png" alt="Dining Set">
         <h6>DESKS</h6>
         </div>
-  <div class="swiper-slide2 collection-card">
+  <div class="swiper-slide collection-card">
           <img src="assets/images/cat-table.png" alt="Arm Chair">
         <h6>TABLES</h6>
         </div>
-  <div class="swiper-slide2 collection-card">
+  <div class="swiper-slide collection-card">
           <img src="assets/images/cat-cabinet.png" alt="Diwan Cot">
         <h6>CABINETS</h6>
         </div>
@@ -1505,6 +1505,26 @@
     duration: 1,
     ease: "power2.out"
   });
+// Mobile Swiper Init for mySwiper2
+var swiper2 = new Swiper(".mySwiper2", {
+  slidesPerView: 2,
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+  pagination: {
+    el: ".swiper-pagination2",
+    clickable: true,
+  },
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    480: { slidesPerView: 2 },
+    768: { slidesPerView: 3 }
+  }
+});
 </script>
 <script>
   var swiper = new Swiper(".mySwiper3", {
